@@ -1,0 +1,30 @@
+.training-card {
+    margin: 5px;
+    max-width: 400px;
+    border-left-color: teal;
+    border-left-width: 6px;
+    border-left-style: solid;
+}
+
+.trainingImage{
+    margin: 10px;
+}
+
+.trainingTitle{
+    margin-left: 10px;
+}
+
+.JEChip{
+    background-color: rgb(42, 207, 42);
+    color: aliceblue;
+}
+
+.SSEChip {
+    background-color: orange;
+    color: aliceblue;
+}
+
+.levelChips{
+    margin-left: 5px;
+
+}

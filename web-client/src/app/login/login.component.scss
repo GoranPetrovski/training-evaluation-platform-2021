@@ -1,0 +1,55 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 720px;
+    background-image: url('../../assets/images/mountains.png');
+    background-position: center center; // image centered both vertically and horizontally
+    background-size: cover; // image covers the entire background
+}
+
+.sign-in-form {
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+  
+    opacity: .93; //   background-color: rgb(169, 214, 214);allows background-image to slightly show through.
+    padding: 20px;
+    // margin-right: 20px;
+}
+
+a {
+    line-height: 32px;
+}
+
+button {
+    float: right;
+}
+
+.message {
+    float: right;
+}
+
+.logo {
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.card-inverse {
+    background-color: #333;
+    border-color: #333;
+}
+
+.form-control::-webkit-input-placeholder { color: #bbb; }  /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder { color: #bbb; }  /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder { color: #bbb; }  /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder { color: #bbb; }  /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder { color: #bbb; }  /* Microsoft Edge */
+
+.login-card{
+    background-color:rgb(220, 240, 239);
+}

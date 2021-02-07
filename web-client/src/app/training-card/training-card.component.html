@@ -1,0 +1,46 @@
+<mat-card class="training-card">
+  <mat-card-header>
+    <div class="row">
+      <mat-icon color="primary">developer_board</mat-icon>
+      <span class="trainingTitle">{{training.name}}</span>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <img src="assets/images/training.png" width="165px" height="105px" class="trainingImage">
+
+    <div>
+      <mat-card-subtitle>
+        <div class="row">
+          <div class="col-md-1">
+            <mat-icon>show_chart</mat-icon>
+          </div>
+          <div class="col-md-3">
+            {{ 'trainings.level' | translate }}
+          </div>
+          <div class="col-md-5">
+            <mat-chip *ngIf="training.level == 'JSE'" class="JEChip" matTooltip="Junior Software Engineer">{{ training.level }}</mat-chip>
+            <mat-chip *ngIf="training.level == 'SE'" color="primary" matTooltip="Software Engineer" selected>{{ training.level }}</mat-chip>
+            <mat-chip *ngIf="training.level == 'SSE'" class="SSEChip" matTooltip="Senior Software Engineer">{{ training.level }}</mat-chip>
+            <mat-chip *ngIf="training.level == 'TL'" color="accent" matTooltip="Team Lead" selected>{{ training.level }}</mat-chip>
+          </div>
+        </div>
+      </mat-card-subtitle>
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="basic" class="action-btn" (click)="previewDetails()">
+      <mat-icon>add</mat-icon>{{ 'trainings.details' | translate }}</button>
+    <button mat-raised-button *ngIf="isAdmin()" color="primary" class="action-btn" (click)="editDialog()">
+      <mat-icon>create</mat-icon>
+    </button>
+    <button mat-raised-button *ngIf="isAdmin()" color="warn" class="action-btn" (click)="deleteDialog()">
+      <mat-icon>delete</mat-icon>
+    </button>
+
+    //TODO
+    <button mat-raised-button color="accent" class="action-btn" (click)="sendRequest()">
+      <mat-icon>star</mat-icon>{{ 'trainings.sendRequest' | translate }}</button>
+  </mat-card-actions>
+</mat-card>

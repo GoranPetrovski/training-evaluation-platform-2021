@@ -1,0 +1,32 @@
+<div class="sign-in-form">
+  <div class="logo">
+    <img src="./assets/images/logo.png" width="220" />
+  </div>
+  <mat-card class="login-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>LOGIN</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Pass the #signInForm template reference variable (of type ngForm) to the onSubmit handler function when the form is submitted -->
+      <form #signInForm="ngForm" (ngSubmit)="onSubmit(signInForm)" novalidate>
+        <div class="form-group">
+          <input class="form-control" name="username" required placeholder="User Name" ngModel #username="ngModel" />
+          <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+            User Name is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <input class="form-control" name="password" required type="password" placeholder="Password" ngModel #password="ngModel" />
+          <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+            Password is required.
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <div *ngIf="loading">Not correct username or password!</div>
+        <a [routerLink]="['/register']" class="btn btn-link">Sign up</a>
+      </form>
+    </mat-card-content>
+
+  </mat-card>
+</div>

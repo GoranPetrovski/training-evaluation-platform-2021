@@ -1,0 +1,52 @@
+<mat-card class="training-card">
+  <mat-card-header>
+    <div class="row">
+      <div class="col-md-1">
+        <mat-icon color="primary">developer_board</mat-icon>
+      </div>
+      <div class="col-md-7">
+        <span class="trainingTitle">{{trainingRequest.training.name}}</span>
+      </div>
+      <div class="col-md-3">
+        <span>
+          <mat-chip-list>
+            <mat-chip *ngIf="trainingRequest.training.level == 'JE'" matTooltip="Junior Software Engineer">{{ trainingRequest.training.level }}</mat-chip>
+            <mat-chip *ngIf="trainingRequest.training.level == 'SE'" matTooltip="Software Engineer">{{ trainingRequest.training.level }}</mat-chip>
+            <mat-chip *ngIf="trainingRequest.training.level == 'SSE'" matTooltip="Senior Software Engineer">{{ trainingRequest.training.level }}</mat-chip>
+            <mat-chip *ngIf="trainingRequest.training.level == 'TL'" matTooltip="Team Lead">{{ trainingRequest.training.level }}</mat-chip>
+          </mat-chip-list>
+        </span>
+      </div>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+
+    <img src="assets/images/training.png" width="165px" height="105px" class="trainingImage">
+
+    <div>
+      <mat-card-subtitle>
+        <div class="row">
+          <div class="col-md-1">
+            <mat-icon>show_chart</mat-icon>
+          </div>
+          <div class="col-md-3">
+            {{ 'trainings.status' | translate }}
+          </div>
+          <div class="col-md-6">
+            <mat-chip-list>
+              <mat-chip class="approvedStatus">{{ trainingRequest.status }}</mat-chip>
+            </mat-chip-list>
+          </div>
+        </div>
+      </mat-card-subtitle>
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="basic" class="action-btn" (click)="previewDetails()">
+      <mat-icon>add</mat-icon>{{ 'trainings.details' | translate }}</button>
+    <button mat-raised-button color="accent" *ngIf="!trainingRequest.completed" class="action-btn" (click)="giveProgress()">
+      <mat-icon>star</mat-icon>{{ 'trainings.progress' | translate }}</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,9 @@
+<div class="container">
+  <app-header-title [icon]='approveIcon' [title]='approveTitle'></app-header-title>
+  <hr>
+  <div class="row">
+    <div *ngFor="let tr of trainingRequests">
+      <app-training-request-card [trainingRequest]='tr' (previewDetailsClick)="previewDetailsDialog($event)" (giveProgressBtnClick)="giveProgressOfTraining($event)"></app-training-request-card>
+    </div>
+  </div>
+</div>

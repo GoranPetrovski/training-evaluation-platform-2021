@@ -1,0 +1,77 @@
+<div class="container">
+  <app-header-title [icon]='rateIcon' [title]='rateTitle'></app-header-title>
+
+  <div class="row">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>{{ 'request.number' | translate }}</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="user">
+        <th mat-header-cell *matHeaderCellDef>{{ 'request.users' | translate }}</th>
+        <td mat-cell *matCellDef="let element">
+          <img src="assets/images/profile.png" height="30px"> {{element.userId.firstname}} {{element.userId.lastname}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="training">
+        <th mat-header-cell *matHeaderCellDef>{{ 'request.trainingName' | translate }}</th>
+        <td mat-cell *matCellDef="let element">
+          <img src="assets/images/training.png" height="30px"> {{element.trainingId.name}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="rate">
+        <th mat-header-cell *matHeaderCellDef>{{ 'request.rate' | translate }}</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="row">
+            <div class="col-md-8">
+              <star-rating (ratingChange)="onRatingChange($event)" [starType]="'svg'" [rating]="element.rating"></star-rating>
+            </div>
+
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>{{ 'request.action' | translate}}</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="row">
+            <div class="col-md-3" *ngIf="!element.done">
+              <button mat-stroked-button color="accent" class="rateBtn" (click)="rateRequest(element)">
+                <mat-icon>star</mat-icon> Rate</button>
+            </div>
+            <div class="col-md-3" *ngIf="!element.done">
+              <button mat-stroked-button color="accent" class="doneBtn" (click)="doneRating(element)">
+                <mat-icon>check</mat-icon>
+              </button>
+            </div>
+            <div class="col-md-6" *ngIf="element.done" class="doneBtn">
+              <mat-chip-list>
+                <mat-chip selected>
+                  {{ element.rating }} / 5
+                </mat-chip>
+              </mat-chip-list>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6">
+                  <span>Num of current stars is: {{ element.rating }} stars</span>
+                </div>
+                <div class="col-md-6">
+                  <img *ngIf="element.rating >= 4" src="assets/images/cup.gif" width="65px" height="95px">
+                  <p *ngIf="element.rating < 4">You must learn more</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+</div>

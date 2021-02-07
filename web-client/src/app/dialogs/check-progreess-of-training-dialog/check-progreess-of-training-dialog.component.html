@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>
+  <mat-icon color="warn">star</mat-icon> Check progress of training
+</h2>
+<mat-dialog-content>
+  <div class="row">
+    <div class="col-md-10">
+      <mat-chip-list>
+        <mat-chip>{{ selectedSkills.selectedOptions.selected.length }} / {{trainingRequest.training.skills.length}}</mat-chip>
+      </mat-chip-list>
+    </div>
+    <div class="col-md-2">
+      <mat-chip-list>
+        <mat-chip selected>{{(selectedSkills.selectedOptions.selected.length * (100/trainingRequest.training.skills.length)) | number: '.1'
+          }}/100%
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <mat-progress-bar mode="determinate" [value]="selectedSkills.selectedOptions.selected.length * (100/trainingRequest.training.skills.length)"></mat-progress-bar>
+    </div>
+  </div>
+  <div>
+    <h5 class="subTitle">
+      <mat-icon>list</mat-icon>List of all training skills</h5>
+    <mat-selection-list #selectedSkills>
+      <mat-list-option *ngFor="let skill of trainingRequest.training.skills">
+        {{ skill }}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <mat-divider></mat-divider>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button color="info" mat-dialog-close>No</button>
+  <button mat-button *ngIf="selectedSkills.selectedOptions.selected.length == trainingRequest.training.skills.length" mat-stroked-button
+    color="accent" (click)="complete()">Complete</button>
+</mat-dialog-actions>

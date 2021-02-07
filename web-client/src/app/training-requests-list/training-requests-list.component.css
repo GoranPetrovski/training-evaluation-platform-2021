@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+}
+
+.training-title{
+    padding: 20px;
+}
+
+.check-btn{
+    background-color: #28a745;
+}
+
+.approvedChip{
+    background-color: #28a745;
+    color: antiquewhite;
+    
+}
+
+.actionChip{
+    font-weight: bold;
+}

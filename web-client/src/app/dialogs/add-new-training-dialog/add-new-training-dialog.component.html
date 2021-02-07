@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>
+  <mat-icon color="primary">add</mat-icon> Create new item</h2>
+<mat-dialog-content>
+  <div class="col-md-12 example-container">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field>
+          <input matInput placeholder="Training name" [formControl]="name" [(ngModel)]="training.name" required>
+          <mat-error *ngIf="name.invalid">{{getErrorMessage("name")}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-select placeholder="Training level" [(ngModel)]="training.level">
+          <mat-option *ngFor="let level of levels" [value]="level">
+            {{ level }}
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <mat-form-field class="topMargin">
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let skill of skills" [selectable]="selectable" [removable]="removable" (removed)="remove(skill)">
+          {{skill}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="Select skills ..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+    </mat-form-field>
+
+    <mat-form-field class="topMargin">
+      <textarea matInput placeholder="Enter a description" [(ngModel)]="training.description"></textarea>
+    </mat-form-field>
+
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button color="primary" (click)="save()">
+    <mat-icon>save</mat-icon> Save
+  </button>
+  <button mat-button color="primary" (click)="dismiss()">
+    <mat-icon>cancel</mat-icon> Cancel
+  </button>
+</mat-dialog-actions>

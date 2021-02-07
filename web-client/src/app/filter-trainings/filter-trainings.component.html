@@ -1,0 +1,24 @@
+<mat-card>
+  <h4 mat-subheader>Filter training items</h4>
+  <div class="row">
+    <div class="col s1">
+      <mat-form-field class="example-full-width">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter by name" [value]="nameFilter" (input)="nameFilter = $event.target.value">
+      </mat-form-field>
+    </div>
+    <div class="col s1">
+      <mat-select placeholder="Filter by level" [(ngModel)]="levelFilter">
+        <mat-option *ngFor="let level of levels" [value]="level" (click)="selectedLevel(level);">
+          {{ level }}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="col s1">
+      <button mat-raised-button color="accent" *ngIf="isUserRoleTrainer()" (click)="createNewItem()">
+        <mat-icon>add</mat-icon> Create new</button>
+    </div>
+    <div class="col s1">
+      <mat-slide-toggle (click)="viewTrainingCard()">{{ viewTitle }}</mat-slide-toggle>
+    </div>
+  </div>
+</mat-card>

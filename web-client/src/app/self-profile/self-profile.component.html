@@ -1,0 +1,86 @@
+<div class="container">
+  <app-header-title [icon]='selfIcon' [title]='selfTitle'></app-header-title>
+
+  <div class="row">
+    <div class="col-md-4">
+      <img src="assets/images/profile.png" class="rounded-circle">
+    </div>
+    <div class="col-md-8" *ngIf="currentUser" style="text-align: center">
+      <h2>{{ currentUser.firstname }} {{ currentUser.lastname}}</h2>
+      <hr>
+      <h4 style="margin-left: 40%">
+        <mat-chip-list>
+          <mat-chip>{{ currentUser.username}}</mat-chip>
+        </mat-chip-list>
+      </h4>
+    </div>
+  </div>
+  <div class="row" id="selfProfileTitles">
+    <div class="col-md-4">
+      <mat-card class="titleCard">
+        <h3>
+          <mat-icon>cast</mat-icon>Trainings</h3>
+      </mat-card>
+    </div>
+    <div class="col-md-3">
+      <mat-card class="titleCard">
+        <h3>
+          <mat-icon>grade</mat-icon> Grade</h3>
+      </mat-card>
+    </div>
+    <div class="col-md-5">
+      <mat-card class="titleCard">
+        <h3>
+          <mat-icon>book</mat-icon> Skills</h3>
+      </mat-card>
+    </div>
+  </div>
+  <div class="row" id="selfTrainingRow" *ngFor="let tr of trainingRate">
+    <div class="col-md-4" style="text-align: left">
+      <img src="assets/images/training.png" height="30px"> {{tr.trainingId.name}}
+    </div>
+    <div class="col-md-3">
+
+      <div class="row">
+        <div class="col-md-8">
+          {{tr.rating}}
+          <div *ngIf="tr.rating == 1" class="oneStar" matTooltip="1 star">
+            <mat-icon>star</mat-icon>
+          </div>
+          <div *ngIf="tr.rating == 2" class="twoStars" matTooltip="2 stars">
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+          </div>
+          <div *ngIf="tr.rating == 3" class="threeStars" matTooltip="3 stars">
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+          </div>
+          <div *ngIf="tr.rating == 4" class="fourStars" matTooltip="4 stars">
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+          </div>
+          <div *ngIf="tr.rating == 5" class="fiveStars" matTooltip="5 stars">
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div *ngIf="tr.rating >= 4">
+            <img src="assets/images/cup.gif" width="25px" height="45px">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <mat-chip-list>
+        <mat-chip *ngFor="let skill of tr.trainingId.skills" color="primary" selected>{{ skill }}</mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+</div>

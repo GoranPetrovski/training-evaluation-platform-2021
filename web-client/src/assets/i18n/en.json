@@ -1,0 +1,41 @@
+{
+    "Title": "Translation example",
+    "pageTitle": "Training evaluation platform",
+    "TrainingRecords": "Trainings Records",
+    "RegisteredUsers": "Registered users",
+    "Logout": "Logout",
+    "FilterTrainingItems": "Filter training items",
+    "CreateNew": "Create new",
+    "Details": "Details",
+    "Edit": "Edit",
+    "Delete": "Delete",
+    "ViewTraining": "View Training records",
+    "CardView": "Card view of training records",
+    "TableView": "Table view of training records",
+    "home": {
+        "TrainingSkills": "Training skills evaluation",
+        "AchieveGoals": "Achieve your goals",
+        "GainExperience": "Gain with practical experience",
+        "ImproveKnowledge": "Improve your knowledge"
+    },
+    "trainings": {
+        "sendRequest": "Send Request",
+        "delete": "Delete",
+        "edit": "Edit",
+        "details": "Details",
+        "action": "Action",
+        "number": "No.",
+        "name": "Name",
+        "level": "Level",
+        "description": "Description",
+        "status": "Status",
+        "progress": "Check progress"
+    },
+    "request": {
+        "number": "Number",
+        "users": "Users",
+        "trainingName": "Training name",
+        "details": "Details",
+        "action": "Action"
+    }
+}

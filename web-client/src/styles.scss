@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~css-star-rating/scss/star-rating';
+
+
+html {
+  background-color: rgb(220, 240, 239);
+}
+  
+body {
+  font-family: 'Open Sans', sans-serif; // font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+  
+  // don't do this:
+  // .title-bar {
+  //     background-color: pink !important;
+  // }
+  // instead, do this for 'app' prefixed classes:
+.app-title-bar {
+  background-color: #fff;
+}

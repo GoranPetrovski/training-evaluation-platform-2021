@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>
+  <mat-icon color="primary">home</mat-icon> Detail training item</h2>
+<mat-dialog-content>
+  <mat-list role="list">
+    <mat-list-item role="listitem">
+
+      <div class="row">
+        <div class="col-md-2">
+          <mat-icon>developer_board</mat-icon>
+        </div>
+        <div class="col-md-3 col-md-offset-1">Name:</div>
+        <div class="col-md-6">{{ data.name }}</div>
+      </div>
+
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item role="listitem">
+      <div class="row">
+        <div class="col-md-2">
+          <mat-icon>show_chart</mat-icon>
+        </div>
+        <div class="col-md-3  col-md-offset-1">Level:</div>
+        <div class="col-md-5 col-md-offset-1">{{ data.level }}</div>
+      </div>
+
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item role="listitem">
+      <div class="row">
+        <div class="col-md-1">
+          <mat-icon>cast_for_education</mat-icon>
+        </div>
+        <div class="col-md-2">
+          Skills:
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9">
+          <mat-chip-list>
+            <mat-chip *ngFor="let skill of data.skills" color="primary" selected>{{ skill}}</mat-chip>
+          </mat-chip-list>
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</mat-dialog-content>

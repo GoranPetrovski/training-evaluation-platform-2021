@@ -1,0 +1,16 @@
+table {
+    width: 100%;
+}
+
+.training-title{
+    padding: 20px;
+}
+
+.rateBtn{
+    margin-right: -40px;
+    margin-top: 10px;
+}
+
+.doneBtn{
+    margin-top: 10px;
+}

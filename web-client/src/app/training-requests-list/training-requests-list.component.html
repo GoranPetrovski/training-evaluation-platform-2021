@@ -1,0 +1,58 @@
+<div class="container">
+  <app-header-title [icon]='requestIcon' [title]='requestTitle'></app-header-title>
+
+  <div class="row">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>{{ 'request.number' | translate }}</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="user">
+        <th mat-header-cell *matHeaderCellDef>{{ 'request.users' | translate }}</th>
+        <td mat-cell *matCellDef="let element">
+          <img src="assets/images/profile.png" height="30px"> {{element.user.firstname}} {{element.user.lastname}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="training">
+        <th mat-header-cell *matHeaderCellDef>{{ 'request.trainingName' | translate }}</th>
+        <td mat-cell *matCellDef="let element">
+          <img src="assets/images/training.png" height="30px"> {{element.training.name}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef>{{ 'request.details' | translate }}</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="basic" class="action-btn" (click)="previewDetailsDialog(element)">
+            <mat-icon>add</mat-icon>{{ 'trainings.details' | translate }}</button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>{{ 'request.action' | translate}}</th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element.status == 'PENDING'" class="actionBtn">
+            <button mat-mini-fab class="check-btn" (click)="approveRequest(element)">
+              <mat-icon>check</mat-icon>
+            </button> |
+            <button mat-mini-fab color="warn" (click)="cancelRequest(element)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+          <div *ngIf="element.status != 'PENDING'" class="actionChip">
+            <mat-chip-list>
+              <mat-chip *ngIf="element.status == 'APPROVED'" matTooltip="Request is approved by trainer" class="approvedChip"><mat-icon>check</mat-icon> {{ element.status }}</mat-chip>
+              <mat-chip *ngIf="element.status == 'CANCELED'" matTooltip="Request is canceled by trainer" color="warn" selected><mat-icon>close</mat-icon> {{ element.status }}</mat-chip>
+            </mat-chip-list>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+</div>
